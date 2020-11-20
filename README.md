@@ -7,9 +7,9 @@ Important to know:
 
 From the App_Code Folder
 
-ClDataReturn Is a General class to manage all data return in a table.
-ClConenection manage all connecte object to SQL.
-ClAbsence Manage All Absence Data that you are creating or listening
+ClDataReturn Is a General class to manage all data return in a table. 
+Connection manage all connected object to SQL. 
+Absence Manage All Absence Data that you are creating or listening
 
 It is important to run this app in Visual Studio 2019 or higer
 
