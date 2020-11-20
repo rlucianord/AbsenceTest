@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsenceTest", "RlucianoTest\AbsenceTest.csproj", "{220E93D8-BE85-4C5B-989D-C2D1EC93B75E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{220E93D8-BE85-4C5B-989D-C2D1EC93B75E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{220E93D8-BE85-4C5B-989D-C2D1EC93B75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{220E93D8-BE85-4C5B-989D-C2D1EC93B75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{220E93D8-BE85-4C5B-989D-C2D1EC93B75E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81B37B6C-6B70-490B-A952-946D5BA0ACF6}
+	EndGlobalSection
+EndGlobal
