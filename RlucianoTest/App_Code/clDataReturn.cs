@@ -10,7 +10,7 @@ using System.Web.UI.HtmlControls;
 using System.Data.SqlClient;
 
 /// <summary>
-/// Summary description for clRetornaDatos
+///  This is a general purpose Class for return table in anywhere in the program
 /// </summary>
 namespace AbsenceTest.App_Code
 {

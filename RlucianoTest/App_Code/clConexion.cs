@@ -11,7 +11,9 @@ using System.Data.SqlClient;
 
 /// 
 namespace AbsenceTest.App_Code
-{
+{/// <summary>
+/// This class is for instance of the conecction
+/// </summary>
     public partial class ClConenection
     {
         private SqlConnection SqlConexion;

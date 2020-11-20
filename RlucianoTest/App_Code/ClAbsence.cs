@@ -10,7 +10,8 @@ using System.Web.UI.HtmlControls;
 using System.Data.SqlClient;
 
 /// <summary>
-/// Summary description for clTarifa
+/// Summary 
+/// This class manage all Data for Absences
 /// </summary>
 /// 
 
