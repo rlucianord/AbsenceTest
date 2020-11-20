@@ -31,7 +31,7 @@ namespace AbsenceTest
             objConexion.Connect();
             ObjAbsence = new ClAbsence(objConexion);
             ObjAbsence.ErrorDatos += new EventHandler(objErrorPermiso_Error);
-            Datatable = ObjAbsence.Buscar();
+            Datatable = ObjAbsence.Find();
             ViewState["Permisos"] = Datatable;
             gvPermisos.DataSource = ViewState["Permisos"];
             gvPermisos.DataBind();

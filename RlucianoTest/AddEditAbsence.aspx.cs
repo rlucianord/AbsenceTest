@@ -48,7 +48,7 @@ namespace AbsenceTest
             if (Session["Id"] != null)
             {
                 var tblTarifas = new DataTable();
-                DataTable = ObjPermisos.Buscar(int.Parse(Session["Id"].ToString()));
+                DataTable = ObjPermisos.Find(int.Parse(Session["Id"].ToString()));
                 //
                 if (DataTable.Rows.Count > 0)
                 {

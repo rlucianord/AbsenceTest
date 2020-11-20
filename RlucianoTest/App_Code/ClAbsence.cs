@@ -20,7 +20,7 @@ namespace AbsenceTest.App_Code
     public class ClAbsence
     {
         ClConenection ObConecction;
-        ClDataReturn ObRetornaDatos;
+        ClDataReturn ObjDataReturn;
         SqlCommand Command;
         DataTable Table;
         string Error;
@@ -33,14 +33,14 @@ namespace AbsenceTest.App_Code
             Command = new SqlCommand();
             Command.CommandType = CommandType.StoredProcedure;
             //
-            ObRetornaDatos = new ClDataReturn(ObConecction);
-            ObRetornaDatos.ErrorRetornaDatos += new EventHandler(ObRetornaDatos_ErrorRetornaDatos);
+            ObjDataReturn = new ClDataReturn(ObConecction);
+            ObjDataReturn.ErrorRetornaDatos += new EventHandler(ObRetornaDatos_ErrorRetornaDatos);
             LastError = "";
         }
 
         void ObRetornaDatos_ErrorRetornaDatos(Object sender, EventArgs e)
         {
-            LastError = ObRetornaDatos.LastError;
+            LastError = ObjDataReturn.LastError;
             if (LastError != "") { if (ErrorDatos != null) ErrorDatos(this, EventArgs.Empty); }
         }
 
@@ -49,26 +49,26 @@ namespace AbsenceTest.App_Code
             Command.CommandText = "Ltipo_Permisos";
             Command.Parameters.Clear();
             //
-            Table = ObRetornaDatos.Buscar(Command);
+            Table = ObjDataReturn.Buscar(Command);
             return Table;
         }
 
 
-        public DataTable Buscar()
+        public DataTable Find()
         {
             Command.CommandText = "L_Permisos";
             Command.Parameters.Clear();
             //
-            Table = ObRetornaDatos.Buscar(Command);
+            Table = ObjDataReturn.Buscar(Command);
             return Table;
         }
-        public DataTable Buscar(int IdPermiso)
+        public DataTable Find(int IdPermiso)
         {
             Command.CommandText = "L_Permisos";
             Command.Parameters.Clear();
             Command.Parameters.AddWithValue("@IdPermiso", IdPermiso);
             //
-            Table = ObRetornaDatos.Buscar(Command);
+            Table = ObjDataReturn.Buscar(Command);
             return Table;
         }
 
