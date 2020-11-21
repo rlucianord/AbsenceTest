@@ -13,7 +13,8 @@ Absence Manage All Absence Data that you are creating or listening
 It is important to run this app in Visual Studio 2019 or higer
 
 //2020,11/20 22PM
-I have change the proyec for it to run with Entity Framework and Object Model Class and Inteface, have  added new foltder Interfces for separte the Model from Process.
+
+I have change the proyect for it to run with Entity Framework and Object Model Class and Inteface, have  added new foltder Interfces for separte the Model from Process.
 I also have changed the DataBase name, since I had problem with the other DataBase , know the name is DbTest.
 Also, since  gridview work with dataview, datatable, I have done a class for convert a Linq Queryable to a DataTable for bind the gridview when it necessary, because the linq querable and list does not support Pager propertie on gridview.
 
