@@ -18,6 +18,11 @@ I have change the proyect for it to run with Entity Framework and Object Model C
 I also have changed the DataBase name, since I had problem with the other DataBase , know the name is DbTest.
 Also, since  gridview work with dataview, datatable, I have done a class for convert a Linq Queryable to a DataTable for bind the gridview when it necessary, because the linq querable and list does not support Pager propertie on gridview.
 
+Changed all WebForm to a new Directory, Called Site, It will work in order like MVC project, just without controller, But Interfaces, Model and View(forms).
+
+
+
+
 If you want now or in the future, you can create separate proyects for Model (DataObjects), DAL(Data Access Layer), In a big proyect it is recommendated, but since this is a little test I dont see it necesesary
 
 
