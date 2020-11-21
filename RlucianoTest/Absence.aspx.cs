@@ -32,7 +32,7 @@ namespace AbsenceTest
                              ab.Id,
                              ab.NombreEmpleado,
                              ab.ApellidosEmpleado,
-                             DescTipoPermiso=ab.AbsenceType.Descripcion,
+                             DescTipoPermiso = ab.AbsenceType.Descripcion,
                              ab.FechaPermiso
 
                          }).AsEnumerable();
@@ -45,18 +45,11 @@ namespace AbsenceTest
         }
         protected void ibtnDelete_Click(object sender, EventArgs e)
         {
-            //objConexion = new ClConenection(strCon);
-            //objConexion.ErrorConexion += new EventHandler(objConexion_ErrorConexion);
-            //objConexion.Connect();
-            ////
-            //ObjAbsence = new ClAbsence(objConexion);
-            //ObjAbsence.ErrorDatos += new EventHandler(objErrorPermiso_Error);
-            //ObjAbsence.Delete(int.Parse(((ImageButton)(sender)).CommandArgument));
-            ////
-            //objConexion.CloseConexion();
-            //objConexion = null;
-            //ObjAbsence = null;
-            ////
+            Session["Id"] = ((ImageButton)(sender)).CommandArgument;
+            AbsenceImplementation = new AbsenceImplementation();
+            AbsenceImplementation.DeleteAbsence(int.Parse(Session["Id"].ToString()));
+
+
             Page_Load(sender, EventArgs.Empty);
         }
 
@@ -77,7 +70,7 @@ namespace AbsenceTest
             Response.Redirect("AddEditAbsence.aspx");
         }
 
-        protected void gvTarifas_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void gvPermisos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvPermisos.PageIndex = e.NewPageIndex;
             gvPermisos.DataSource = ViewState["Permisos"];

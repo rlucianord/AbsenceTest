@@ -6,7 +6,7 @@
     <div class="clearfix"></div>
 
     <asp:GridView ID="gvPermisos" runat="server" AutoGenerateColumns="False" CellPadding="2"
-        ForeColor="#333333" GridLines="None" AllowPaging="True" PageSize="25" OnPageIndexChanging="gvTarifas_PageIndexChanging" Height="74px" Width="533px">
+        ForeColor="#333333" GridLines="None" AllowPaging="True" PageSize="25" OnPageIndexChanging="gvPermisos_PageIndexChanging" Height="74px" Width="533px">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>

@@ -6,7 +6,9 @@ using System.Web;
 using AbsenceTest.Interfaces;
 
 namespace AbsenceTest.Models
-{
+{/// <summary>
+/// Implementing the interface for IAbasences
+/// </summary>
     public partial class AbsenceImplementation : IAbsences
     {
         AbsenceModel DataModel;
