@@ -26,7 +26,7 @@ namespace AbsenceTest.App_Code
         string Error;
 
         public event EventHandler ErrorDatos;
-
+      
         public ClAbsence(ClConenection Conexion)
         {
             ObConecction = Conexion;

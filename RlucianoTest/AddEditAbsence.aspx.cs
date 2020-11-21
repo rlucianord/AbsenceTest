@@ -1,4 +1,5 @@
 ﻿using AbsenceTest.App_Code;
+using AbsenceTest.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,10 +13,8 @@ namespace AbsenceTest
 {
     public partial class AddEditAbsence : Page
     {
-        ClConenection objConexion;
-        ClAbsence ObjPermisos;
-        string strCon = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-        DataTable DataTable;
+        AbsenceImplementation AbsenceImplementation;
+        private static Permiso Absences;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -23,11 +22,9 @@ namespace AbsenceTest
             ShowHideError(false, "");
             if (!IsPostBack)
             {
-                objConexion = new ClConenection(strCon);
-                objConexion.Connect();
-                ObjPermisos = new ClAbsence(objConexion);
-                ObjPermisos.ErrorDatos += new EventHandler(objErrorPermiso_Error);
-                var tipospermisos = ObjPermisos.ListTipoPermisos();
+                Absences = new Permiso();
+                AbsenceImplementation = new AbsenceImplementation();
+                var tipospermisos = ConverTable.LINQToDataTable(AbsenceImplementation.GetAbsenceTypes());
                 ddlapbsencetaype.DataSource = tipospermisos;
                 ddlapbsencetaype.DataBind();
 
@@ -35,9 +32,6 @@ namespace AbsenceTest
                 ddlapbsencetaype.DataValueField = "Id";
                 ddlapbsencetaype.DataBind();
                 Absence();
-                objConexion.CloseConexion();
-                objConexion = null;
-                ObjPermisos = null;
             }
 
         }
@@ -47,15 +41,18 @@ namespace AbsenceTest
         {
             if (Session["Id"] != null)
             {
+                int Id = int.Parse(Session["Id"].ToString());
                 var tblTarifas = new DataTable();
-                DataTable = ObjPermisos.Find(int.Parse(Session["Id"].ToString()));
-                //
-                if (DataTable.Rows.Count > 0)
+                Absences = AbsenceImplementation.GetAbsences().Where(a => a.Id == Id).FirstOrDefault();
+                //ConverTable.LINQToDataTable(AbsenceImplementation.GetAbsences().Where(a=>a.Id== Id));
+
+                if (Absences != null)
                 {
-                    TbxName.Text = DataTable.Rows[0]["NombreEmpleado"].ToString();
-                    TbxLastName.Text = DataTable.Rows[0]["ApellidosEmpleado"].ToString();
-                    AbsenceDate.Text = string.Format("{0:0:yyyy-MM-dd}", DateTime.Parse(DataTable.Rows[0]["FechaPermiso"].ToString()).ToShortDateString());
-                    ddlapbsencetaype.SelectedValue = DataTable.Rows[0]["TipoPermiso"].ToString();
+                    TbxName.Text = Absences.NombreEmpleado;
+                    TbxLastName.Text = Absences.ApellidosEmpleado;
+                    AbsenceDate.Text = string.Format("{0:0:yyyy-MM-dd}", Absences.FechaPermiso.ToShortDateString());
+                    ddlapbsencetaype.SelectedValue = Absences.TipoPermiso.ToString();
+
 
 
                 }
@@ -70,33 +67,41 @@ namespace AbsenceTest
             //pnlError.Visible = ShowHide;
             //lblError.Text = Mensaje;
         }
-        void objConexion_ErrorConexion(object sender, EventArgs e)
-        {
-            ShowHideError(true, objConexion.LastError);
-        }
 
-        void objErrorPermiso_Error(object sender, EventArgs e)
-        {
-            ShowHideError(true, ObjPermisos.LastError);
-        }
 
         protected void ibtnOk_Click(object sender, EventArgs e)
         {
-            objConexion = new ClConenection(strCon);
-            objConexion.Connect();
-            ObjPermisos = new ClAbsence(objConexion);
-            ObjPermisos.ErrorDatos += new EventHandler(objErrorPermiso_Error);
             bool Failed = false;
+            try
+            {
+                AbsenceImplementation = new AbsenceImplementation();
+                if (Absences == null)
+
+                    Absences = new Permiso();
 
 
-            if (Session["Id"] != null)
-                Failed = ObjPermisos.Update(TbxName.Text, TbxLastName.Text, int.Parse(ddlapbsencetaype.SelectedValue), DateTime.Parse(AbsenceDate.Text), int.Parse(Session["Id"].ToString()));
-            else
-                Failed = ObjPermisos.Insert(TbxName.Text, TbxLastName.Text, int.Parse(ddlapbsencetaype.SelectedValue), DateTime.Parse(AbsenceDate.Text));
-            //
-            objConexion.CloseConexion();
-            objConexion = null;
-            ObjPermisos = null;
+                Absences.NombreEmpleado = TbxName.Text.ToUpper();
+                Absences.FechaPermiso = DateTime.Parse(AbsenceDate.Text);
+                Absences.ApellidosEmpleado = TbxLastName.Text.ToUpper();
+
+                Absences.TipoPermiso = int.Parse(ddlapbsencetaype.SelectedValue);
+                if (Session["Id"] != null)
+                    AbsenceImplementation.UpdateAbsence(Absences);
+                else
+                    AbsenceImplementation.AddAbsence(Absences);
+                Failed = true;
+            }
+            catch (Exception)
+            {
+
+                Failed = false;
+            }
+
+
+
+
+
+
             //
             if (Failed)
                 Response.Redirect("Absence.aspx");

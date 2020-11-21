@@ -70,6 +70,8 @@
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -126,19 +128,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Absence.aspx" />
     <Content Include="AddEditAbsence.aspx" />
-    <Content Include="App_Data\Database1.mdf" />
-    <Content Include="App_Data\Database1_log.ldf">
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
-    <Content Include="App_Data\DataBasescript.sql" />
     <Content Include="Contact.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="App_Data\DataBasescript.sql" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -150,6 +149,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Bundle.config" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -199,28 +199,13 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
-    <Content Include="Absence.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
-    <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
     <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddEditAbsence.aspx.cs">
-      <DependentUpon>AddEditAbsence.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AddEditAbsence.aspx.designer.cs">
-      <DependentUpon>AddEditAbsence.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Code\clConexion.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="App_Code\ClAbsence.cs" />
-    <Compile Include="App_Code\clDataReturn.cs" />
-    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -228,7 +213,20 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Absence.aspx.cs">
+      <DependentUpon>Absence.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Absence.aspx.designer.cs">
+      <DependentUpon>Absence.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddEditAbsence.aspx.cs">
+      <DependentUpon>AddEditAbsence.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddEditAbsence.aspx.designer.cs">
+      <DependentUpon>AddEditAbsence.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -243,6 +241,19 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IAbsences.cs" />
+    <Compile Include="Models\AbsenceImplementation.cs" />
+    <Compile Include="Models\AbsenceModel.cs" />
+    <Compile Include="Models\Permiso.cs" />
+    <Compile Include="Models\SQLToLinq.cs" />
+    <Compile Include="Models\TipoPermiso.cs" />
+    <Compile Include="App_Code\clConexion.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="App_Code\ClAbsence.cs" />
+    <Compile Include="App_Code\clDataReturn.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -260,13 +271,6 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Absence.aspx.cs">
-      <DependentUpon>Absence.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Absence.aspx.designer.cs">
-      <DependentUpon>Absence.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
