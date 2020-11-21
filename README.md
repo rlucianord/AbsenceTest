@@ -10,6 +10,11 @@ From the App_Code Folder
 ClDataReturn Is a General class to manage all data return in a table. 
 Connection manage all connected object to SQL. 
 Absence Manage All Absence Data that you are creating or listening
-
 It is important to run this app in Visual Studio 2019 or higer
+
+//2020,11/20 22PM
+I have change the proyec for it to run with Entity Framework and Object Model Class and Inteface, have  added new foltder Interfces for separte the Model from Process.
+
+If you want now or in the future, you can create separate proyects for Model (DataObjects), DAL(Data Access Layer), In a big proyect it is recommendated, but since this is a little test I dont see it necesesary
+
 
