@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Absence.aspx.cs" Inherits="AbsenceTest.Absence" MasterPageFile="~/Site.Master" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Absence.aspx.cs" Inherits="AbsenceTest.Absence" MasterPageFile="~/Site/Site.Master" EnableEventValidation="false" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
@@ -10,18 +10,18 @@
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:ImageButton AlternateText="Actualizar" ID="ibtnEdit" runat="server" ImageUrl="Images/edit.gif"
+                    <asp:ImageButton AlternateText="Actualizar" ID="ibtnEdit" runat="server" ImageUrl="~/Images/edit.gif"
                         CommandArgument='<%# DataBinder.Eval(Container.DataItem,"Id") %>'
                         OnClick="ibtnEdit_Click" />
                 </ItemTemplate>
                 <HeaderTemplate>
-                    <asp:ImageButton AlternateText="Crear Tarifa" ID="ibtnAdd" runat="server" ImageUrl="Images/add.gif"
+                    <asp:ImageButton AlternateText="Crear Tarifa" ID="ibtnAdd" runat="server" ImageUrl="~/Images/add.gif"
                         OnClick="ibtnAdd_Click" />
                 </HeaderTemplate>
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:ImageButton AlternateText="Eliminar" ID="ibtnDelete" runat="server" ImageUrl="Images/delete.gif"
+                    <asp:ImageButton AlternateText="Eliminar" ID="ibtnDelete" runat="server" ImageUrl="~/Images/delete.gif"
                         CommandArgument='<%# DataBinder.Eval(Container.DataItem,"Id") %>'
                         OnClick="ibtnDelete_Click" />
                     <ajaxToolkit:ConfirmButtonExtender ID="DeleteExtender" runat="server" BehaviorID="DeleteExtender" ConfirmText="Please confirm your action!" TargetControlID="ibtnDelete"></ajaxToolkit:ConfirmButtonExtender>

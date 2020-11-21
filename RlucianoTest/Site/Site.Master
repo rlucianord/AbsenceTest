@@ -16,7 +16,8 @@
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
 </head>
 <body>
     <form runat="server">
@@ -53,17 +54,17 @@
                 <div class="navbar-collapse collapse">
 
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
+                        <li><a runat="server" href="~/Site">Home</a></li>
 
                         <li class="dropdown"><a href="#" class="dropdown-toggle">Absence <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a runat="server" href="~/Absence">List</a></li>
-                                <li><a runat="server" href="~/AddEditAbsence">Create New</a></li>
+                                <li><a runat="server" href="~/Site/Absence">List</a></li>
+                                <li><a runat="server" href="~/Site/AddEditAbsence">Create New</a></li>
 
                             </ul>
                         </li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
+                        <li><a runat="server" href="~/Site/About">About</a></li>
+                        <li><a runat="server" href="~/Site/Contact">Contact</a></li>
 
                     </ul>
                 </div>
