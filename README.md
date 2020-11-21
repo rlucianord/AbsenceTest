@@ -19,7 +19,7 @@ I also have changed the DataBase name, since I had problem with the other DataBa
 Also, since  gridview work with dataview, datatable, I have done a class for convert a Linq Queryable to a DataTable for bind the gridview when it necessary, because the linq querable and list does not support Pager propertie on gridview.
 
 Changed all WebForm to a new Directory, Called Site, It will work in order like MVC project, just without controller, But Interfaces, Model and View(forms).
-
+In webconfig I have used My MSSQL express Server, jus just execute the script from the App_Data that contain Database and Change the Credencials for your MSSQL Express Server
 
 
 
